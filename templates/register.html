@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="auth-layout">
+    <div class="auth-copy surface-panel">
+        <span class="eyebrow" data-i18n="register.label">Boshlash</span>
+        <h1 data-i18n="register.title">EduBridge bilan shaxsiy roadmap yarating.</h1>
+        <p data-i18n="register.desc">Student yoki mentor sifatida ro'yxatdan o'ting va platformadagi asosiy xizmatlar bilan ishlashni boshlang.</p>
+        <div class="mini-metrics">
+            <div class="mini-metric">
+                <strong data-i18n="register.metric1.title">Free</strong>
+                <span data-i18n="register.metric1.desc">Bepul maslahat kontenti</span>
+            </div>
+            <div class="mini-metric">
+                <strong data-i18n="register.metric2.title">1-on-1</strong>
+                <span data-i18n="register.metric2.desc">Premium konsulting</span>
+            </div>
+            <div class="mini-metric">
+                <strong data-i18n="register.metric3.title">Global</strong>
+                <span data-i18n="register.metric3.desc">University admission support</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="auth-card">
+        <span class="eyebrow" data-i18n="register.form.label">Create account</span>
+        <h2 data-i18n="register.form.title">Register</h2>
+        <form class="form-stack" onsubmit="register(event)">
+            <div class="form-grid">
+                <input type="text" id="first_name" placeholder="Ism" autocomplete="given-name" data-i18n-placeholder="register.form.firstName">
+                <input type="text" id="last_name" placeholder="Familiya" autocomplete="family-name" data-i18n-placeholder="register.form.lastName">
+            </div>
+            <input type="text" id="username" placeholder="Username" required data-i18n-placeholder="register.form.username">
+            <input type="email" id="email" placeholder="Email" required data-i18n-placeholder="register.form.email">
+            <input type="password" id="password" placeholder="Password" required data-i18n-placeholder="register.form.password">
+            <input type="password" id="password2" placeholder="Passwordni tasdiqlang" required data-i18n-placeholder="register.form.password2">
+            <select id="role">
+                <option value="student" data-i18n="register.form.roleStudent">Student</option>
+                <option value="mentor" data-i18n="register.form.roleMentor">Mentor</option>
+            </select>
+            <button type="submit" class="btn btn-dark" data-i18n="register.form.submit">Register</button>
+        </form>
+        <p class="auth-link">
+            <span data-i18n="register.form.haveAccount">Allaqachon hisob bormi?</span>
+            <a href="/login/" data-i18n="register.form.loginLink">Kirish</a>
+        </p>
+    </div>
+</section>
+{% endblock %}

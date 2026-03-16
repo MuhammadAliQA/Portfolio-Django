@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+{% load i18n static %}
+
+{% block title %}EduBridge Admin | {% trans 'Site administration' %}{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/admin-custom.css' %}">
+{% endblock %}
+
+{% block branding %}
+<div class="admin-brand">
+    <span class="admin-logo">EB</span>
+    <div>
+        <strong>EduBridge Admin</strong>
+        <small>IELTS / SAT / Admission</small>
+    </div>
+</div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

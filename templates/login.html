@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="auth-layout">
+    <div class="auth-copy surface-panel">
+        <span class="eyebrow" data-i18n="login.label">Kirish</span>
+        <h1 data-i18n="login.title">Hisobingizga kiring va tayyorgarlikni boshqaring.</h1>
+        <p data-i18n="login.desc">Mentorlar bilan bog'lanish, konsultatsiyalarni kuzatish va admission jarayonini tartibli olib borish uchun platformaga kiring.</p>
+        <ul class="check-list">
+            <li data-i18n="login.item1">Consultation va mentoring sessiyalarini boshqarish</li>
+            <li data-i18n="login.item2">Saved mentors va progress ma'lumotlari</li>
+            <li data-i18n="login.item3">IELTS, SAT va admission bo'yicha shaxsiy ish maydoni</li>
+        </ul>
+    </div>
+
+    <div class="auth-card">
+        <span class="eyebrow" data-i18n="login.form.label">Welcome back</span>
+        <h2 data-i18n="login.form.title">Login</h2>
+        <form class="form-stack" onsubmit="login(event)">
+            <input type="text" id="username" placeholder="Username" required data-i18n-placeholder="login.form.username">
+            <input type="password" id="password" placeholder="Password" required data-i18n-placeholder="login.form.password">
+            <button type="submit" class="btn btn-dark" data-i18n="login.form.submit">Login</button>
+        </form>
+        <p class="auth-link">
+            <span data-i18n="login.form.noAccount">Hisobingiz yo'qmi?</span>
+            <a href="/register/" data-i18n="login.form.registerLink">Ro'yxatdan o'tish</a>
+        </p>
+    </div>
+</section>
+{% endblock %}

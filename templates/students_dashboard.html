@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="dashboard-layout">
+    <aside class="dash-sidebar">
+        <div class="dash-profile">
+            <div class="dash-avatar" id="dash-avatar-placeholder">S</div>
+            <h3 id="user-name" data-i18n="dashboard.user">Foydalanuvchi</h3>
+            <span class="badge" id="user-role" data-i18n="dashboard.role.student">Student</span>
+        </div>
+        <nav class="dash-nav">
+            <a href="#consultations" class="dash-link active" data-i18n="dashboard.nav.consultations">Konsultatsiyalarim</a>
+            <a href="#practice" class="dash-link" data-i18n="studentDash.practice.nav">Mock tests</a>
+            <a href="#favorites" class="dash-link" data-i18n="dashboard.nav.favorites">Saqlangan mentorlar</a>
+            <a href="#profile" class="dash-link" data-i18n="dashboard.nav.profile">Profil</a>
+            <a href="#" class="dash-link danger" id="logout-btn" data-i18n="dashboard.nav.logout">Chiqish</a>
+        </nav>
+    </aside>
+
+    <div class="dash-main">
+        <section class="dashboard-hero-card">
+            <div>
+                <span class="eyebrow">Student Space</span>
+                <h1 class="dashboard-hero-title">Tayyorlov jarayoni va konsultatsiyalar bitta workspace ichida.</h1>
+                <p class="dashboard-hero-text">Bu panel student uchun kerak bo'ladigan asosiy actionlarni bir joyga yig'adi: bron, practice, saved mentors va profile updates.</p>
+            </div>
+            <div class="dashboard-hero-metrics">
+                <div class="dashboard-hero-stat">
+                    <strong>3</strong>
+                    <span>Core zones</span>
+                </div>
+                <div class="dashboard-hero-stat">
+                    <strong>IELTS</strong>
+                    <span>Priority track</span>
+                </div>
+                <div class="dashboard-hero-stat">
+                    <strong>Live</strong>
+                    <span>Mock flow</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="consultations" class="dash-section">
+            <div class="dash-section-header">
+                <h2 data-i18n="dashboard.consultations.title">Konsultatsiyalarim</h2>
+                <a href="/mentors/" class="btn btn-primary btn-sm" data-i18n="dashboard.consultations.new">+ Yangi bron</a>
+            </div>
+            <div id="consultations-list">
+                <div class="dashboard-skeleton">
+                    <div class="consultation-skeleton"></div>
+                    <div class="consultation-skeleton"></div>
+                    <div class="consultation-skeleton"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="practice" class="dash-section" style="display:none;">
+            <div class="dash-section-header">
+                <h2 data-i18n="studentDash.practice.title">Mock tests</h2>
+                <a href="/mock-tests/" class="btn btn-primary btn-sm" data-i18n="studentDash.practice.cta">Practice hub</a>
+            </div>
+            <div class="dashboard-grid">
+                <article class="dashboard-card dashboard-card-primary dashboard-card-glow">
+                    <span class="eyebrow" data-i18n="studentDash.practice.kicker">IELTS + SAT</span>
+                    <h3 data-i18n="studentDash.practice.mainTitle">Practice flow hozir bir joyga yig'ildi</h3>
+                    <p data-i18n="studentDash.practice.mainDesc">Reading, Listening, Math va Verbal mock testlar bilan timed practice qilishingiz mumkin.</p>
+                </article>
+                <article class="dashboard-card">
+                    <h3 data-i18n="studentDash.practice.ieltsTitle">IELTS practice</h3>
+                    <p data-i18n="studentDash.practice.ieltsDesc">Reading va Listening bo'yicha qisqa mock testlarni ishlab, natijani darhol ko'ring.</p>
+                </article>
+                <article class="dashboard-card">
+                    <h3 data-i18n="studentDash.practice.satTitle">SAT practice</h3>
+                    <p data-i18n="studentDash.practice.satDesc">Math va Verbal bo'limlarida tezkor drill va score checkpoint oling.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="favorites" class="dash-section" style="display:none;">
+            <div class="dash-section-header">
+                <h2 data-i18n="studentDash.favorites.title">Saqlangan mentorlar</h2>
+                <a href="/mentors/" class="btn btn-secondary btn-sm" data-i18n="studentDash.favorites.cta">Mentor topish</a>
+            </div>
+            <div class="empty-state">
+                <div class="empty-orb"></div>
+                <h3 data-i18n="studentDash.favorites.emptyTitle">Favorites blok tayyor</h3>
+                <p data-i18n="studentDash.favorites.emptyDesc">Mentorlar sahifasidagi save/favorite action orqali bu yer keyingi bosqichda real ma'lumot bilan to'ldiriladi.</p>
+            </div>
+        </section>
+
+        <section id="profile" class="dash-section" style="display:none;">
+            <h2 data-i18n="dashboard.profile.title">Profil ma'lumotlari</h2>
+            <form id="profile-form" class="form-stack" style="max-width:480px;">
+                <label><span data-i18n="dashboard.profile.firstName">Ism</span> <input type="text" id="p-first_name" placeholder="Ismingiz" data-i18n-placeholder="dashboard.profile.firstNamePh"></label>
+                <label><span data-i18n="dashboard.profile.lastName">Familiya</span> <input type="text" id="p-last_name" placeholder="Familiyangiz" data-i18n-placeholder="dashboard.profile.lastNamePh"></label>
+                <label><span data-i18n="dashboard.profile.email">Email</span> <input type="email" id="p-email" placeholder="Email" data-i18n-placeholder="dashboard.profile.emailPh"></label>
+                <label><span data-i18n="dashboard.profile.phone">Telefon</span> <input type="tel" id="p-phone" placeholder="+998 90 123 45 67" data-i18n-placeholder="dashboard.profile.phonePh"></label>
+                <label><span data-i18n="dashboard.profile.bio">Bio</span> <textarea id="p-bio" rows="3" placeholder="O'zingiz haqida..." data-i18n-placeholder="dashboard.profile.bioPh"></textarea></label>
+                <button type="submit" class="btn btn-dark" data-i18n="dashboard.profile.save">Saqlash</button>
+            </form>
+            <p id="profile-result" style="margin-top:8px; font-size:0.9rem;"></p>
+        </section>
+    </div>
+</section>
+<script src="{% static 'js/dashboard.js' %}"></script>
+<script>
+function activateDashboardSection(target) {
+    document.querySelectorAll('.dash-section').forEach((section) => {
+        section.style.display = 'none';
+        section.classList.remove('section-live');
+    });
+    document.querySelectorAll('.dash-link').forEach((link) => link.classList.remove('active'));
+    const section = document.getElementById(target);
+    const link = document.querySelector(`.dash-link[href="#${target}"]`);
+    if (section) {
+        section.style.display = 'block';
+        requestAnimationFrame(() => section.classList.add('section-live'));
+    }
+    if (link) link.classList.add('active');
+}
+
+document.querySelectorAll('.dash-link[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        activateDashboardSection(link.getAttribute('href').slice(1));
+    });
+});
+
+document.getElementById('logout-btn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (typeof logout === 'function') logout();
+});
+
+document.getElementById('profile-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.disabled = true;
+    const body = {
+        first_name: document.getElementById('p-first_name').value,
+        last_name: document.getElementById('p-last_name').value,
+        email: document.getElementById('p-email').value,
+        phone: document.getElementById('p-phone').value,
+        bio: document.getElementById('p-bio').value,
+    };
+    try {
+        const res = await apiFetch('/api/users/me/', { method: 'PATCH', body: JSON.stringify(body) });
+        const result = document.getElementById('profile-result');
+        result.style.color = res.ok ? 'green' : '#c0392b';
+        result.textContent = res.ok ? t('dashboard.profile.saved') : t('dashboard.profile.error');
+    } finally {
+        btn.disabled = false;
+    }
+});
+
+(async () => {
+    activateDashboardSection('consultations');
+    const user = typeof getUser === 'function' ? getUser() : null;
+    if (user) {
+        document.getElementById('p-first_name').value = user.first_name || '';
+        document.getElementById('p-last_name').value = user.last_name || '';
+        document.getElementById('p-email').value = user.email || '';
+        const nameEl = document.getElementById('user-name');
+        if (nameEl) nameEl.textContent = user.full_name || user.username;
+        const avatarEl = document.getElementById('dash-avatar-placeholder');
+        if (avatarEl) avatarEl.textContent = (user.full_name || user.username || 'S')[0].toUpperCase();
+    }
+    try {
+        const res = await apiFetch('/api/users/me/');
+        const data = await res.json();
+        if (res.ok) {
+            document.getElementById('p-first_name').value = data.first_name || '';
+            document.getElementById('p-last_name').value = data.last_name || '';
+            document.getElementById('p-email').value = data.email || '';
+            document.getElementById('p-phone').value = data.phone || '';
+            document.getElementById('p-bio').value = data.bio || '';
+        }
+    } catch {}
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-hero">
+    <span class="eyebrow" data-i18n="sitemap.label">Sitemap</span>
+    <h1 data-i18n="sitemap.title">Sahifalar xaritasi</h1>
+    <p data-i18n="sitemap.desc">Asosiy bo'limlar va tezkor havolalar.</p>
+</section>
+
+<section class="section-block">
+    <div class="resource-strip">
+        <article class="resource-card">
+            <h3 data-i18n="sitemap.mainTitle">Asosiy sahifalar</h3>
+            <a href="/" data-i18n="nav.home">Bosh sahifa</a>
+            <a href="/mentors/" data-i18n="nav.mentors">Mentorlar</a>
+            <a href="/mock-tests/" data-i18n="nav.mockTests">Mock tests</a>
+            <a href="/student-dashboard/" data-i18n="nav.dashboard">Dashboard</a>
+        </article>
+        <article class="resource-card">
+            <h3 data-i18n="sitemap.accountTitle">Akkaunt</h3>
+            <a href="/register/" data-i18n="footer.register">Ro'yxatdan o'tish</a>
+            <a href="/login/" data-i18n="footer.login">Kirish</a>
+        </article>
+        <article class="resource-card">
+            <h3 data-i18n="sitemap.helpTitle">Yordam</h3>
+            <a href="/faq/" data-i18n="top.faq">FAQ</a>
+            <a href="/information/" data-i18n="top.info">Ma'lumotlar</a>
+        </article>
+    </div>
+</section>
+{% endblock %}

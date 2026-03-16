@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="mock-hero">
+    <div class="mock-hero-copy" data-parallax data-parallax-strength="18">
+        <span class="eyebrow" data-i18n="mock.hero.label">Practice Lab</span>
+        <h1 data-i18n="mock.hero.title">IELTS va SAT mock tests bir joyda.</h1>
+        <p data-i18n="mock.hero.desc">Timed tests, instant scoring va studentlar uchun qulay practice flow. Mentorlik bilan birga ishlaydigan real test qatlamini ishga tushirdik.</p>
+        <div class="hero-actions">
+            <a href="#exam-list" class="btn btn-primary" data-i18n="mock.hero.ctaStart">Testni boshlash</a>
+            <a href="/register/" class="btn btn-secondary" data-i18n="mock.hero.ctaAccount">Account ochish</a>
+        </div>
+    </div>
+    <div class="mock-hero-panel" data-parallax data-parallax-strength="26">
+        <div class="mock-stat-card">
+            <span data-i18n="mock.hero.stat1.label">Tracks</span>
+            <strong>IELTS + SAT</strong>
+        </div>
+        <div class="mock-stat-card">
+            <span data-i18n="mock.hero.stat2.label">Format</span>
+            <strong data-i18n="mock.hero.stat2.value">MCQ + timed flow</strong>
+        </div>
+        <div class="mock-stat-card">
+            <span data-i18n="mock.hero.stat3.label">Result</span>
+            <strong data-i18n="mock.hero.stat3.value">Instant score</strong>
+        </div>
+    </div>
+</section>
+
+<section class="section-block">
+    <div class="section-heading centered">
+        <span class="eyebrow" data-i18n="mock.section.label">Mock Tests</span>
+        <h2 data-i18n="mock.section.title">Aniq, tez va student-friendly practice hub</h2>
+        <p data-i18n="mock.section.desc">Har bir test uchun duration, section va daraja ko'rsatiladi. Start bosilganda test right panelda ochiladi.</p>
+    </div>
+    <div class="mock-shell">
+        <aside class="mock-list" id="exam-list">
+            {% for exam in exams %}
+            <article class="mock-card{% if featured_exam and featured_exam.id == exam.id %} active{% endif %}" data-exam-card data-exam-id="{{ exam.id }}">
+                <div class="mock-card-top">
+                    <span class="shape-pill">{{ exam.get_track_display }}</span>
+                    <span class="mock-chip">{{ exam.section }}</span>
+                </div>
+                <h3>{{ exam.title }}</h3>
+                <p>{{ exam.description }}</p>
+                <div class="mock-card-meta">
+                    <span>{{ exam.duration_minutes }} min</span>
+                    <span>{{ exam.level|default:"Starter" }}</span>
+                    <span>{{ exam.questions.count }} savol</span>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm" data-load-exam="{{ exam.id }}" data-i18n="mock.card.start">Start</button>
+            </article>
+            {% endfor %}
+        </aside>
+
+        <div class="mock-stage surface-panel">
+            <div class="mock-stage-head">
+                <div>
+                    <span class="eyebrow" data-i18n="mock.live.label">Live Attempt</span>
+                    <h2 id="exam-title" data-i18n="mock.live.select">Testni tanlang</h2>
+                </div>
+                <div class="mock-timer" id="exam-timer">--:--</div>
+            </div>
+            <p id="exam-description" class="status-note" data-i18n="mock.live.desc">Chap tomondagi mock testlardan birini tanlang. Timer faqat Start bosilgandan keyin ishlaydi.</p>
+            <div id="mock-stage-loading" class="stage-skeleton" hidden>
+                <span class="skeleton-line skeleton-line-lg"></span>
+                <span class="skeleton-line"></span>
+                <span class="skeleton-line skeleton-line-sm"></span>
+                <div class="skeleton-option-list">
+                    <span class="skeleton-option"></span>
+                    <span class="skeleton-option"></span>
+                    <span class="skeleton-option"></span>
+                </div>
+            </div>
+            <form id="mock-test-form" class="mock-form"></form>
+            <div class="mock-actions">
+                <button type="button" id="start-exam" class="btn btn-primary" disabled data-i18n="mock.live.start">Start</button>
+                <button type="button" id="submit-exam" class="btn btn-dark" disabled data-i18n="mock.live.submit">Submit test</button>
+            </div>
+            <div id="mock-result" class="mock-result" hidden></div>
+        </div>
+    </div>
+</section>
+
+{% if recent_attempts %}
+<section class="section-block compact-section">
+    <div class="section-heading">
+        <span class="eyebrow" data-i18n="mock.history.label">History</span>
+        <h2 data-i18n="mock.history.title">Oxirgi mock natijalaringiz</h2>
+    </div>
+    <div class="benefit-grid">
+        {% for attempt in recent_attempts %}
+        <article class="benefit-card">
+            <h3>{{ attempt.exam.title }}</h3>
+            <p>{{ attempt.exam.get_track_display }} / {{ attempt.exam.section }}</p>
+            <strong>{{ attempt.score }}/{{ attempt.max_score }} · {{ attempt.percentage }}%</strong>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{% if track_progress or leaderboard %}
+<section class="section-block compact-section">
+    <div class="mock-insights">
+        <article class="surface-panel">
+            <div class="section-heading compact">
+                <span class="eyebrow" data-i18n="mock.progress.label">Progress</span>
+                <h2 data-i18n="mock.progress.title">Track progress</h2>
+            </div>
+            {% if track_progress %}
+            <div class="progress-bars">
+                {% for item in track_progress %}
+                <div class="progress-row">
+                    <div class="progress-copy">
+                        <strong>{{ item.exam__track|upper }}</strong>
+                        <span>Best: {{ item.best|floatformat:0 }}% · Avg: {{ item.avg|floatformat:0 }}%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: {{ item.best|floatformat:0 }}%;"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="status-note" data-i18n="mock.progress.empty">Login qilganingizdan keyin track progress shu yerda chiqadi.</p>
+            {% endif %}
+        </article>
+
+        <article class="surface-panel">
+            <div class="section-heading compact">
+                <span class="eyebrow" data-i18n="mock.leaderboard.label">Leaderboard</span>
+                <h2 data-i18n="mock.leaderboard.title">Top attemptlar</h2>
+            </div>
+            {% if leaderboard %}
+            <div class="leaderboard-list">
+                {% for row in leaderboard %}
+                <div class="leaderboard-row">
+                    <strong>{{ forloop.counter }}. {{ row.user__username }}</strong>
+                    <span>{{ row.best_score|floatformat:0 }}% · {{ row.attempts }} attempts</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="status-note" data-i18n="mock.leaderboard.empty">Hali leaderboard uchun attemptlar yetarli emas.</p>
+            {% endif %}
+        </article>
+    </div>
+</section>
+{% endif %}
+
+<script src="{% static 'js/mock-tests.js' %}"></script>
+{% endblock %}

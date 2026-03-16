@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-hero">
+    <span class="eyebrow" data-i18n="mentors.label">Mentor Directory</span>
+    <h1 data-i18n="mentors.title">IELTS, SAT va admission bo'yicha ekspertlar</h1>
+    <p data-i18n="mentors.desc">Yo'nalish va expertise bo'yicha mos mentorni tanlang.</p>
+</section>
+
+<section class="section-block compact-section">
+    <form method="get" class="filter-bar">
+        <input type="text" name="q" value="{{ search_query }}" placeholder="Mentor yoki expertise qidiring" data-i18n-placeholder="mentors.search">
+        <select name="track">
+            <option value="" data-i18n="mentors.allTracks">Barcha yo'nalishlar</option>
+            {% for value, label in track_options %}
+            <option value="{{ value }}" {% if selected_track == value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary" data-i18n="mentors.filter">Filter</button>
+    </form>
+
+    <div class="mentor-grid">
+        {% for mentor in mentors %}
+        <article class="mentor-card mentor-card-detailed">
+            <div class="mentor-topline">
+                <span class="badge">{{ mentor.get_primary_track_display }}</span>
+                {% if mentor.offers_admission_support %}<span class="badge badge-accent" data-i18n="mentors.badge.admission">Admission Support</span>{% endif %}
+            </div>
+            <h3>{{ mentor.user.get_full_name|default:mentor.user.username }}</h3>
+            <p class="mentor-headline">{{ mentor.headline|default:mentor.expertise }}</p>
+            <p>{{ mentor.about|default:mentor.expertise }}</p>
+            <div class="detail-list">
+                <span><strong data-i18n="mentors.university">Universitet:</strong> {{ mentor.university_background|default:"Ko'rsatilmagan" }}</span>
+                <span><strong data-i18n="mentors.languages">Tillar:</strong> {{ mentor.languages|default:"Uzbek, English" }}</span>
+                <span><strong data-i18n="mentors.experience">Tajriba:</strong> {{ mentor.experience_years }} <span data-i18n="mentors.years">yil</span></span>
+                <span><strong data-i18n="mentors.students">Studentlar:</strong> {{ mentor.students_helped }}</span>
+                <span><strong data-i18n="mentors.price">Narx:</strong> ${{ mentor.price_per_hour }}<span data-i18n="mentors.perHour">/soat</span></span>
+                <span><strong data-i18n="mentors.rating">Reyting:</strong> {{ mentor.rating }}</span>
+            </div>
+        </article>
+        {% empty %}
+        <article class="empty-state">
+            <h3 data-i18n="mentors.empty.title">Bu filter bo'yicha mentor topilmadi</h3>
+            <p data-i18n="mentors.empty.desc">Admin paneldan mentor qo'shing yoki filterlarni o'zgartirib qayta urinib ko'ring.</p>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

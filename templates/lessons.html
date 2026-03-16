@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="page-hero">
+    <span class="eyebrow" data-i18n="lessons.label">Lesson library</span>
+    <h1 data-i18n="lessons.title">IELTS va SAT uchun video darslar kutubxonasi</h1>
+    <p data-i18n="lessons.desc">Mentorlar yuklagan video darslar va materiallar. Studentlar faqat ko'radi, upload qilmaydi.</p>
+</section>
+
+<section class="section-block compact-section">
+    <div class="lesson-filter-row">
+        <a href="/lessons/" class="filter-chip{% if not selected_track %} active{% endif %}" data-i18n="lessons.filter.all">Barcha darslar</a>
+        <a href="/lessons/?track=ielts" class="filter-chip{% if selected_track == 'ielts' %} active{% endif %}" data-i18n="lessons.filter.ielts">IELTS darslari</a>
+        <a href="/lessons/?track=sat" class="filter-chip{% if selected_track == 'sat' %} active{% endif %}" data-i18n="lessons.filter.sat">SAT darslari</a>
+    </div>
+
+    {% if lessons %}
+    <div class="lesson-grid">
+        {% for lesson in lessons %}
+        <article class="lesson-card">
+            <div class="lesson-media lesson-protected" data-lesson-id="{{ lesson.id }}">
+                <div class="lesson-watermark" aria-hidden="true">EduBridge Secure View</div>
+                {% if lesson.is_video_file %}
+                <video class="lesson-video secure-video" controls controlsList="nodownload noplaybackrate" disablePictureInPicture preload="metadata" data-secure-src="/api/lessons/{{ lesson.id }}/asset/">
+                    <source>
+                </video>
+                {% elif lesson.video_url %}
+                <iframe
+                    class="lesson-video-frame"
+                    src="{{ lesson.embed_video_url }}"
+                    title="{{ lesson.title }}"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+                {% else %}
+                <div class="lesson-fallback">
+                    <span>{{ lesson.track_label }}</span>
+                    <strong>{{ lesson.title }}</strong>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="lesson-body">
+                <div class="lesson-topline">
+                    <span class="badge">{{ lesson.track_label }}</span>
+                    <span class="lesson-meta">
+                        <span data-i18n="lessons.by">Mentor</span>: {{ lesson.creator_name }}
+                    </span>
+                </div>
+                <h3>{{ lesson.title }}</h3>
+                <p>{{ lesson.description|default:"EduBridge mentorlaridan strukturalangan lesson." }}</p>
+                <div class="lesson-actions">
+                    {% if lesson.video_url %}
+                    <a href="{{ lesson.video_url }}" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="lessons.watch">Videoni ko'rish</a>
+                    {% endif %}
+                    {% if lesson.file and request.user.is_authenticated and request.user.role == 'mentor' or request.user.is_staff %}
+                    <a href="/api/lessons/{{ lesson.id }}/asset/" target="_blank" rel="noopener" class="btn btn-secondary secure-download-link" data-base-href="/api/lessons/{{ lesson.id }}/asset/" data-i18n="lessons.download">Materialni ochish</a>
+                    {% endif %}
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h3 data-i18n="lessons.empty">Hozircha publish qilingan darslar yo'q.</h3>
+        <p>Mentor dashboard orqali birinchi video lessonni yuklash mumkin.</p>
+    </div>
+    {% endif %}
+</section>
+<script src="{% static 'js/secure-media.js' %}"></script>
+{% endblock %}

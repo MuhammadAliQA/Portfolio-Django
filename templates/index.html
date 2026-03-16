@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-banner">
+    <div class="hero-media">
+        <div class="motion-orb motion-orb-one"></div>
+        <div class="motion-orb motion-orb-two"></div>
+        <div class="hero-overlay">
+            <div class="hero-copy" data-parallax data-parallax-strength="18">
+                <span class="hero-kicker" data-i18n="home.hero.kicker">WELCOME TO EDUBRIDGE</span>
+                <h1 data-i18n="home.hero.title">Talabalar uchun zamonaviy tayyorgarlik platformasi.</h1>
+                <p data-i18n="home.hero.subtitle">IELTS, SAT va admission bo'yicha professional mentorlik hamda strategik konsalting xizmatlari.</p>
+                <div class="hero-actions">
+                    <a href="/mentors/" class="btn btn-primary" data-i18n="home.hero.ctaPrimary">Mentor topish</a>
+                    <a href="/register/" class="btn btn-secondary" data-i18n="home.hero.ctaSecondary">Bepul konsultatsiya</a>
+                    <a href="/mock-tests/" class="btn btn-ghost" data-i18n="home.hero.ctaMock">Mock tests</a>
+                </div>
+            </div>
+            <div class="hero-card" data-parallax data-parallax-strength="28">
+                <span class="eyebrow" data-i18n="home.quick.label">Quick Start</span>
+                <h3 data-i18n="home.quick.title">Shaxsiy roadmapni 3 qadamda tuzing</h3>
+                <p data-i18n="home.quick.desc">Level, target score va deadline bo'yicha sizga mos mentorlarni tavsiya qilamiz.</p>
+                <ul class="check-list">
+                    <li data-i18n="home.quick.item1">Diagnosis va maqsad</li>
+                    <li data-i18n="home.quick.item2">Mentor match</li>
+                    <li data-i18n="home.quick.item3">Roadmap va monitoring</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="hero-booking">
+            <div class="booking-field">
+                <label data-i18n="home.booking.start">Start date</label>
+                <input type="date" value="2026-03-20">
+            </div>
+            <div class="booking-field">
+                <label data-i18n="home.booking.track">Track</label>
+                <select>
+                    <option data-i18n="home.booking.track.ielts">IELTS</option>
+                    <option data-i18n="home.booking.track.sat">SAT</option>
+                    <option data-i18n="home.booking.track.admission">Admission</option>
+                </select>
+            </div>
+            <div class="booking-field">
+                <label data-i18n="home.booking.mentorType">Mentor type</label>
+                <select>
+                    <option data-i18n="home.booking.mentorType.senior">Senior mentor</option>
+                    <option data-i18n="home.booking.mentorType.ielts">IELTS specialist</option>
+                    <option data-i18n="home.booking.mentorType.sat">SAT coach</option>
+                </select>
+            </div>
+            <div class="booking-field">
+                <label data-i18n="home.booking.session">Session</label>
+                <select>
+                    <option data-i18n="home.booking.session.one">1-on-1</option>
+                    <option data-i18n="home.booking.session.group">Group</option>
+                    <option data-i18n="home.booking.session.essay">Essay review</option>
+                </select>
+            </div>
+            <button class="btn btn-dark" data-i18n="home.booking.reserve">Reserve Now</button>
+        </div>
+    </div>
+</section>
+
+<section class="section-block">
+    <div class="section-heading centered">
+        <span class="eyebrow" data-i18n="home.deals.label">Latest Deals</span>
+        <h2 data-i18n="home.deals.title">Eng so'nggi tayyor paketlar</h2>
+        <p data-i18n="home.deals.desc">IELTS, SAT va admission bo'yicha qisqa, aniq va natijaga yo'naltirilgan paketlar.</p>
+    </div>
+    <div class="deal-grid">
+        <article class="deal-card">
+            <div class="deal-thumb thumb-1"></div>
+            <div class="deal-body">
+                <h3 data-i18n="home.deals.ielts.title">IELTS Intensive</h3>
+                <p data-i18n="home.deals.ielts.desc">Band score diagnostikasi, speaking-writing feedback va weekly practice reja.</p>
+                <ul class="deal-list">
+                    <li data-i18n="home.deals.ielts.item1">Speaking va Writing rubric</li>
+                    <li data-i18n="home.deals.ielts.item2">Mock test va feedback</li>
+                    <li data-i18n="home.deals.ielts.item3">Target band uchun roadmap</li>
+                </ul>
+                <a href="/register/" class="deal-cta" data-i18n="home.deals.cta">Book now</a>
+            </div>
+        </article>
+        <article class="deal-card">
+            <div class="deal-thumb thumb-2"></div>
+            <div class="deal-body">
+                <h3 data-i18n="home.deals.sat.title">SAT Math + Verbal</h3>
+                <p data-i18n="home.deals.sat.desc">Math foundation, reading strategy va time management bo'yicha tezkor bootcamp.</p>
+                <ul class="deal-list">
+                    <li data-i18n="home.deals.sat.item1">Diagnostic va zaif bo'limlar</li>
+                    <li data-i18n="home.deals.sat.item2">Mashq setlari va tahlil</li>
+                    <li data-i18n="home.deals.sat.item3">Score improvement reja</li>
+                </ul>
+                <a href="/register/" class="deal-cta" data-i18n="home.deals.cta">Book now</a>
+            </div>
+        </article>
+        <article class="deal-card">
+            <div class="deal-thumb thumb-3"></div>
+            <div class="deal-body">
+                <h3 data-i18n="home.deals.adm.title">Admission Consulting</h3>
+                <p data-i18n="home.deals.adm.desc">University shortlist, essay review va scholarship strategy bo'yicha to'liq qo'llab-quvvatlash.</p>
+                <ul class="deal-list">
+                    <li data-i18n="home.deals.adm.item1">Ariza taqvimi</li>
+                    <li data-i18n="home.deals.adm.item2">Essay va CV ko'rib chiqish</li>
+                    <li data-i18n="home.deals.adm.item3">Topshirish nazorati</li>
+                </ul>
+                <a href="/register/" class="deal-cta" data-i18n="home.deals.cta">Book now</a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section-block action-strip">
+    <div class="action-shell">
+        <div>
+            <span class="eyebrow" data-i18n="home.action.label">Action zone</span>
+            <h2 data-i18n="home.action.title">Bir klikda practice mode ga o'ting.</h2>
+            <p data-i18n="home.action.desc">IELTS Reading yoki SAT Math mock testni tanlang, timed flow ni ishga tushiring va natijani darhol ko'ring.</p>
+        </div>
+        <div class="action-buttons">
+            <a href="/mock-tests/" class="btn btn-primary" data-i18n="home.action.ielts">IELTS mock boshlash</a>
+            <a href="/mock-tests/" class="btn btn-secondary" data-i18n="home.action.sat">SAT mock boshlash</a>
+        </div>
+    </div>
+</section>
+
+<section class="section-block highlight-section">
+    <div class="section-heading centered">
+        <span class="eyebrow" data-i18n="home.highlight.label">Focus tracks</span>
+        <h2 data-i18n="home.highlight.title">IELTS, SAT va Admission uchun premium yo'nalishlar</h2>
+    </div>
+    <div class="highlight-grid">
+        <article class="highlight-card">
+            <div class="shape-pill">IELTS</div>
+            <h3 data-i18n="home.highlight.ielts.title">IELTS Accelerator</h3>
+            <p data-i18n="home.highlight.ielts.desc">Speaking + Writing intensiv, band score diagnostika va feedback bilan.</p>
+            <a href="/mentors/?track=ielts" class="text-link" data-i18n="home.highlight.cta">Ko'rish</a>
+        </article>
+        <article class="highlight-card">
+            <div class="shape-pill">SAT</div>
+            <h3 data-i18n="home.highlight.sat.title">SAT Elite</h3>
+            <p data-i18n="home.highlight.sat.desc">Math va Reading timing, practice review hamda score-improvement reja.</p>
+            <a href="/mentors/?track=sat" class="text-link" data-i18n="home.highlight.cta">Ko'rish</a>
+        </article>
+        <article class="highlight-card">
+            <div class="shape-pill">ADM</div>
+            <h3 data-i18n="home.highlight.adm.title">Admission Studio</h3>
+            <p data-i18n="home.highlight.adm.desc">Essay/CV review, shortlist va scholarship strategiyasi bilan to'liq support.</p>
+            <a href="/mentors/?track=admission" class="text-link" data-i18n="home.highlight.cta">Ko'rish</a>
+        </article>
+    </div>
+</section>
+
+<section class="section-block studio-section">
+    <div class="studio-shell">
+        <div class="studio-copy">
+            <span class="eyebrow" data-i18n="home.studio.label">EduBridge Studio</span>
+            <h2 data-i18n="home.studio.title">Roadmap, lesson va live mentor feedback bitta workflow ichida.</h2>
+            <p data-i18n="home.studio.desc">Verifix va 21-school dagi product-driven uslubga yaqinroq qilib, platformani xizmat emas, ishlaydigan learning system sifatida ko'rsatadigan blok.</p>
+            <div class="studio-points">
+                <div class="studio-point">
+                    <strong data-i18n="home.studio.point1.title">Weekly lessons</strong>
+                    <span data-i18n="home.studio.point1.desc">IELTS va SAT uchun structured materiallar.</span>
+                </div>
+                <div class="studio-point">
+                    <strong data-i18n="home.studio.point2.title">Live feedback</strong>
+                    <span data-i18n="home.studio.point2.desc">Mentordan tezkor correction va next-step guidance.</span>
+                </div>
+                <div class="studio-point">
+                    <strong data-i18n="home.studio.point3.title">Progress tracking</strong>
+                    <span data-i18n="home.studio.point3.desc">Session, score va application holatini bitta joyda ko'rish.</span>
+                </div>
+            </div>
+        </div>
+        <div class="studio-panel" data-parallax data-parallax-strength="18">
+            <div class="studio-metric">
+                <span data-i18n="home.studio.metric1.label">Avg. mentor response</span>
+                <strong>12h</strong>
+            </div>
+            <div class="studio-metric">
+                <span data-i18n="home.studio.metric2.label">Structured tracks</span>
+                <strong>3</strong>
+            </div>
+            <div class="studio-metric">
+                <span data-i18n="home.studio.metric3.label">Lesson format</span>
+                <strong data-i18n="home.studio.metric3.value">Video + PDF</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-block benefits-section">
+    <div class="section-heading centered">
+        <h2 data-i18n="home.benefits.title">EduBridge ni nega tanlashadi</h2>
+        <p data-i18n="home.benefits.desc">Platformani oddiy landing emas, mentorlik, lesson delivery va nazorat bir joyda ishlaydigan tizim sifatida ko'rsatadigan blok.</p>
+    </div>
+    <div class="benefit-grid">
+        <article class="benefit-card">
+            <h3 data-i18n="home.benefits.item1.title">All-in-one workflow</h3>
+            <p data-i18n="home.benefits.item1.desc">Mentor topish, consultation bron qilish va lesson ko'rish bitta oqimda ishlaydi.</p>
+        </article>
+        <article class="benefit-card">
+            <h3 data-i18n="home.benefits.item2.title">Structured lesson hub</h3>
+            <p data-i18n="home.benefits.item2.desc">IELTS va SAT darslari track bo'yicha tartiblangan, mentor tomonidan boshqariladi.</p>
+        </article>
+        <article class="benefit-card">
+            <h3 data-i18n="home.benefits.item3.title">Progress visibility</h3>
+            <p data-i18n="home.benefits.item3.desc">Session status, payment va feedback holati user dashboard ichida ko'rinadi.</p>
+        </article>
+        <article class="benefit-card">
+            <h3 data-i18n="home.benefits.item4.title">Mentor-side control</h3>
+            <p data-i18n="home.benefits.item4.desc">Mentor o'z lessonlari, consultationlari va student oqimini alohida boshqaradi.</p>
+        </article>
+        <article class="benefit-card">
+            <h3 data-i18n="home.benefits.item5.title">Secure access layer</h3>
+            <p data-i18n="home.benefits.item5.desc">Studentlar materialni ko'radi, lekin upload yoki ochiq download workflow berilmaydi.</p>
+        </article>
+        <article class="benefit-card">
+            <h3 data-i18n="home.benefits.item6.title">Flexible education stack</h3>
+            <p data-i18n="home.benefits.item6.desc">IELTS, SAT va admission xizmatlari bitta visual va backend ekotizimga bog'langan.</p>
+        </article>
+    </div>
+</section>
+
+<section class="section-block command-section">
+    <div class="command-shell">
+        <div class="command-copy">
+            <span class="eyebrow" data-i18n="home.command.label">EduBridge Command</span>
+            <h2 data-i18n="home.command.title">Mentorlar, lessonlar va student flow bitta markaziy panelda.</h2>
+            <p data-i18n="home.command.desc">Yangi vizual yo'nalish ink, indigo va cyan kombinatsiyasi bilan product-first ko'rinish beradi. Bu blok Verifix dagi dark product hero ruhiga yaqin, lekin EduBridge uchun moslashtirilgan.</p>
+            <div class="command-metrics">
+                <div class="command-metric">
+                    <strong data-countup="3">3</strong>
+                    <span data-i18n="home.command.metric1">Core tracks</span>
+                </div>
+                <div class="command-metric">
+                    <strong>24/7</strong>
+                    <span data-i18n="home.command.metric2">Accessible learning flow</span>
+                </div>
+                <div class="command-metric">
+                    <strong data-countup="1">1</strong>
+                    <span data-i18n="home.command.metric3">Unified mentor dashboard</span>
+                </div>
+            </div>
+        </div>
+        <div class="command-visual">
+            <div class="floating-panel floating-panel-top" data-parallax data-parallax-strength="30">
+                <span data-i18n="home.command.panel1.label">Lesson access</span>
+                <strong data-i18n="home.command.panel1.value">Protected video view</strong>
+            </div>
+            <div class="phone-stage" data-parallax data-parallax-strength="14">
+                <div class="phone-core">EB</div>
+            </div>
+            <div class="floating-panel floating-panel-bottom" data-parallax data-parallax-strength="26">
+                <span data-i18n="home.command.panel2.label">Mentor dashboard</span>
+                <strong data-i18n="home.command.panel2.value">Upload + consultations</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-block split-layout wide-split">
+    <div>
+        <span class="eyebrow" data-i18n="home.why.label">Why EduBridge</span>
+        <h2 data-i18n="home.why.title">Mentorlar, materiallar va monitoring bitta platformada.</h2>
+        <div class="timeline">
+            {% for step in journey_steps %}
+            <div class="timeline-item">
+                <span>0{{ forloop.counter }}</span>
+                <p>{{ step }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="impact-panel">
+        <span class="eyebrow" data-i18n="home.impact.label">Impact</span>
+        <h3 data-i18n="home.impact.title">Natijaga yo'naltirilgan ekotizim</h3>
+        {% for metric in impact_metrics %}
+        <div class="impact-row">
+            <span>{{ metric.label }}</span>
+            <strong>{{ metric.value }}</strong>
+        </div>
+        {% endfor %}
+        <div class="impact-cta">
+            <a href="/mentors/" class="btn btn-primary" data-i18n="home.impact.cta">Mentorlarni ko'rish</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

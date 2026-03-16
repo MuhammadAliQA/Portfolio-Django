@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="dashboard-layout dashboard-layout-mentor">
+    <aside class="dash-sidebar dash-sidebar-mentor">
+        <div class="dash-profile">
+            <div class="dash-avatar">M</div>
+            <h3 data-i18n="mentorDash.label">Mentor Workspace</h3>
+            <span class="badge">Mentor</span>
+        </div>
+        <div class="dash-mentor-note">
+            <strong>Control Center</strong>
+            <p>Lesson upload, admission workflow va student pipeline bir joyga yig'ilgan.</p>
+        </div>
+    </aside>
+
+    <div class="dash-main">
+<section class="dashboard-hero-card dashboard-hero-card-mentor">
+    <div>
+        <span class="eyebrow" data-i18n="mentorDash.label">Mentor Workspace</span>
+        <h1 class="dashboard-hero-title" data-i18n="mentorDash.title">Mentorlik faoliyatini boshqarish uchun soddalashtirilgan panel</h1>
+        <p class="dashboard-hero-text">Studentlar, upcoming sessions va xizmatlaringizni boshqarish uchun tayyor sahifa strukturasi.</p>
+    </div>
+    <div class="dashboard-hero-metrics">
+        <div class="dashboard-hero-stat">
+            <strong>Upload</strong>
+            <span>Lesson studio</span>
+        </div>
+        <div class="dashboard-hero-stat">
+            <strong>Review</strong>
+            <span>Admission desk</span>
+        </div>
+        <div class="dashboard-hero-stat">
+            <strong>Track</strong>
+            <span>Student pipeline</span>
+        </div>
+    </div>
+</section>
+
+<section class="dashboard-grid">
+    <article class="dashboard-card dashboard-card-primary">
+        <span class="eyebrow" data-i18n="mentorDash.card.mainLabel">Asosiy panel</span>
+        <h3 data-i18n="mentorDash.card.mainTitle">Haftalik sessiyalarni boshqarish</h3>
+        <p data-i18n="mentorDash.card.mainDesc">Bo'sh vaqtlar, bronlar va pricing strategiyasini yangilash shu yerdan boshlanadi.</p>
+        <a href="/mentors/" class="btn btn-light" data-i18n="mentorDash.card.mainCta">Public profile</a>
+    </article>
+
+    <article class="dashboard-card">
+        <h3 data-i18n="mentorDash.card.upcomingTitle">Upcoming consultations</h3>
+        <p data-i18n="mentorDash.card.upcomingDesc">Tasdiqlangan sessiyalar va talabalar bilan bog'liq qisqa ma'lumotlar.</p>
+    </article>
+
+    <article class="dashboard-card">
+        <h3 data-i18n="mentorDash.card.pipelineTitle">Student pipeline</h3>
+        <p data-i18n="mentorDash.card.pipelineDesc">Qaysi student IELTS, SAT yoki admission bosqichida ekanini ko'rsatadigan blok.</p>
+    </article>
+
+    <article class="dashboard-card">
+        <h3 data-i18n="mentorDash.card.feedbackTitle">Feedback and ratings</h3>
+        <p data-i18n="mentorDash.card.feedbackDesc">Reviewlar, average rating va success story statistikasi shu yerda chiqadi.</p>
+    </article>
+    <article class="dashboard-card">
+        <h3 data-i18n="mentorDash.card.availabilityTitle">Availability</h3>
+        <p data-i18n="mentorDash.card.availabilityDesc">Bo'sh vaqt slotlarini yangilash va dars yuklamasini balanslash bo'limi.</p>
+    </article>
+    <article class="dashboard-card">
+        <h3 data-i18n="mentorDash.card.resourcesTitle">Resources</h3>
+        <p data-i18n="mentorDash.card.resourcesDesc">Studentlarga yuboriladigan checklist, rubric va tayyor template fayllar uchun joy.</p>
+    </article>
+</section>
+
+<section class="section-block compact-section">
+    <div class="dashboard-grid">
+        <article class="dashboard-card dashboard-card-primary">
+            <span class="eyebrow" data-i18n="mentorDash.admission.label">Admission Desk</span>
+            <h3 data-i18n="mentorDash.admission.title">Admission yo'nalishi endi bo'sh turmaydi</h3>
+            <p data-i18n="mentorDash.admission.desc">Essay review, shortlist va deadline tracking uchun mentor-side workflow shu blok orqali ko'rinadi.</p>
+        </article>
+        <article class="dashboard-card">
+            <h3 data-i18n="mentorDash.admission.essayTitle">Essay review</h3>
+            <p data-i18n="mentorDash.admission.essayDesc">Common App, personal statement va supplemental essay review oqimini shu yerga ulash mumkin.</p>
+        </article>
+        <article class="dashboard-card">
+            <h3 data-i18n="mentorDash.admission.pipelineTitle">Application pipeline</h3>
+            <p data-i18n="mentorDash.admission.pipelineDesc">Studentlarni shortlist, draft, submit va interview bosqichlariga ajratish uchun tayyor joy.</p>
+        </article>
+    </div>
+</section>
+
+<section class="section-block">
+    <div class="section-heading">
+        <span class="eyebrow" data-i18n="mentorDash.lessons.label">Lesson Studio</span>
+        <h2 data-i18n="mentorDash.lessons.title">IELTS va SAT video darslarini yuklang</h2>
+        <p data-i18n="mentorDash.lessons.desc">Faqat mentorlar dars qo'sha oladi. Studentlar esa materiallarni ko'radi va ochadi.</p>
+        <p class="video-note" data-i18n="mentorDash.lessons.note">Userlar sayt ichida video yozib yubormaydi. Bu bo'lim faqat mentor upload workflow uchun.</p>
+    </div>
+
+    <div class="lessons-shell">
+        <article class="surface-panel">
+            <span class="eyebrow" data-i18n="mentorDash.lessons.formTitle">Yangi lesson qo'shish</span>
+            <form id="lesson-upload-form" class="form-stack" enctype="multipart/form-data">
+                <label>
+                    <span data-i18n="mentorDash.lessons.titleField">Lesson nomi</span>
+                    <input type="text" name="title" required>
+                </label>
+                <label>
+                    <span data-i18n="mentorDash.lessons.descField">Qisqacha tavsif</span>
+                    <textarea name="description" rows="4"></textarea>
+                </label>
+                <div class="form-grid">
+                    <label>
+                        <span data-i18n="mentorDash.lessons.trackField">Yo'nalish</span>
+                        <select name="track">
+                            <option value="ielts">IELTS</option>
+                            <option value="sat">SAT</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span data-i18n="mentorDash.lessons.videoField">Video link</span>
+                        <input type="url" name="video_url" placeholder="https://youtube.com/watch?v=...">
+                    </label>
+                </div>
+                <label>
+                    <span data-i18n="mentorDash.lessons.fileField">Video yoki material fayli</span>
+                    <input type="file" name="file" accept=".mp4,.webm,.mov,.m4v,.ogg,.pdf">
+                </label>
+                <label class="checkbox-row">
+                    <input type="checkbox" name="is_published" checked>
+                    <span data-i18n="mentorDash.lessons.publishField">Darhol publish qilish</span>
+                </label>
+                <p class="status-note" data-i18n="mentorDash.lessons.hint">YouTube link yoki mp4/pdf fayl yuklashingiz mumkin.</p>
+                <button type="submit" class="btn btn-primary" data-i18n="mentorDash.lessons.submit">Lesson yuklash</button>
+                <p id="lesson-upload-message" class="status-note" hidden></p>
+            </form>
+        </article>
+
+        <article class="surface-panel mentor-lessons-panel">
+            <div class="dash-section-header">
+                <h3 data-i18n="mentorDash.lessons.myLibrary">Mening lessonlarim</h3>
+                <a href="/lessons/" class="text-link" data-i18n="lessons.watch">Videoni ko'rish</a>
+            </div>
+            <div id="mentor-lessons-list" class="mentor-lessons-list">
+                <div class="dashboard-skeleton">
+                    <div class="consultation-skeleton"></div>
+                    <div class="consultation-skeleton"></div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+<script src="{% static 'js/lessons.js' %}"></script>
+</div>
+</section>
+{% endblock %}
