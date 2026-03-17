@@ -1,1 +1,1 @@
-web: gunicorn EduBridge.wsgi:application
+gunicorn EduBridge.wsgi:application --bind 0.0.0.0:$PORT
