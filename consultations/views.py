@@ -12,7 +12,7 @@ class ConsultationViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        # Student o'zining, mentor o'z sessiyalarini ko'radi
+
         if user.role == 'mentor':
             return Consultation.objects.select_related(
                 'student', 'mentor', 'mentor__user'

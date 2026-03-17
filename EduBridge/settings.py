@@ -5,12 +5,12 @@ import sys
 
 try:
     import dj_database_url
-except ImportError:  # pragma: no cover - local fallback when deps are not installed yet
+except ImportError:
     dj_database_url = None
 
 try:
-    import whitenoise  # noqa: F401
-except ImportError:  # pragma: no cover - local fallback when deps are not installed yet
+    import whitenoise
+except ImportError:
     whitenoise = None
 
 
@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
 ]
 
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -67,6 +68,78 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+JAZZMIN_SETTINGS = {
+    "site_title": "EduBridge Admin",
+    "site_header": "EduBridge",
+    "site_brand": "EduBridge",
+    "welcome_sign": "EduBridge boshqaruv paneliga xush kelibsiz",
+    "copyright": "EduBridge 2026",
+    "search_model": ["users.User", "mentors.MentorProfile"],
+    "topmenu_links": [
+        {"name": "Sayt", "url": "/", "new_window": True},
+        {"name": "API", "url": "/api/", "new_window": True},
+    ],
+    "usermenu_links": [
+        {"name": "Profilim", "url": "/admin/users/user/", "new_window": False},
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "icons": {
+        "users.User":                 "fas fa-users",
+        "mentors.MentorProfile":      "fas fa-chalkboard-teacher",
+        "consultations.Consultation": "fas fa-calendar-check",
+        "reviews.Review":             "fas fa-star",
+        "payments.Payment":           "fas fa-credit-card",
+        "assessments.Exam":           "fas fa-file-alt",
+        "assessments.Attempt":        "fas fa-chart-bar",
+        "lessons.Lesson":             "fas fa-play-circle",
+        "notifications.Notification": "fas fa-bell",
+    },
+    "default_icon_parents": "fas fa-folder",
+    "default_icon_children": "fas fa-circle",
+    "related_modal_active": True,
+
+    # ✅ GitHub style theme
+    "theme": "flatly",  # Lux o‘rniga Flatly, GitHub light feel
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+
+    # Navbar va accent ranglari GitHub o‘xshash
+    "brand_colour": "navbar-light",
+    "accent": "accent-blue",
+
+    "navbar": "navbar-light",  # Light navbar
+    "no_navbar_border": True,
+    "navbar_fixed": True,
+
+    "layout_boxed": False,
+    "footer_fixed": True,
+    "sidebar_fixed": True,
+
+    "sidebar": "sidebar-light-primary",  # Light sidebar
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": True,
+
+    "sidebar_nav_compact_style": True,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": True,  # GitHub style flat menu
+
+    # Buttons GitHub ranglariga o‘zgartirildi
+    "button_classes": {
+        "primary":   "btn-primary",
+        "secondary": "btn-secondary",
+        "info":      "btn-info",
+        "warning":   "btn-warning",
+        "danger":    "btn-danger",
+        "success":   "btn-success",
+    },
+}
 
 if whitenoise is not None:
     MIDDLEWARE.insert(2, "whitenoise.middleware.WhiteNoiseMiddleware")

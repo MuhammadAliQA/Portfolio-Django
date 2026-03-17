@@ -12,3 +12,4 @@ pytest-cov==6.2.1
 pytest-django==4.11.1
 sqlparse==0.5.5
 whitenoise==6.11.0
+django-jazzmin==3.0.1

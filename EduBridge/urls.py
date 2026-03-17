@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.messages import api
 from django.urls import path, include
 from django.views.generic import TemplateView
 from django.conf import settings
@@ -8,7 +9,6 @@ from .views import HomePageView, LessonListPageView, MentorListPageView, MockTes
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     path('', HomePageView.as_view(), name='home'),
     path('mentors/', MentorListPageView.as_view(), name='mentors'),
     path('lessons/', LessonListPageView.as_view(), name='lessons'),
@@ -20,8 +20,6 @@ urlpatterns = [
     path('faq/', TemplateView.as_view(template_name='faq.html'), name='faq'),
     path('information/', TemplateView.as_view(template_name='information.html'), name='information'),
     path('sitemap/', TemplateView.as_view(template_name='sitemap.html'), name='sitemap'),
-
-
     path('api/users/', include('users.urls')),
     path('api/mentors/', include('mentors.urls')),
     path('api/consultations/', include('consultations.urls')),
@@ -29,9 +27,7 @@ urlpatterns = [
     path('api/lessons/', include('lessons.urls')),
     path('api/reviews/', include('reviews.urls')),
     path('api/assessments/', include('assessments.urls')),
-]
-
-
+    ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
     urlpatterns += static(settings.MEDIA_URL,  document_root=settings.MEDIA_ROOT)
